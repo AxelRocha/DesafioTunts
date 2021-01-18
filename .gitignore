@@ -2,3 +2,4 @@
 /.gradle/
 vcs.xml
 build/
+.idea
