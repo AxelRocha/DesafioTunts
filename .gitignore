@@ -3,3 +3,6 @@
 vcs.xml
 build/
 .idea
+tokens
+compiler.xml
+misc.xml
