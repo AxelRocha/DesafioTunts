@@ -91,20 +91,20 @@ public class Utils {
     }
 
     /**
-     * Verify if the student failed by missing too much classes.
+     * Verify if the student is reproved by not attending to 75% of the classes.
      * @param row The sheet row being read
      * @param values The list of rows
      * @return True if the student did not failed to attend to the class
      * @throws IOException If the data is cant be sent by dao
      */
     private boolean verifyMissedClasses(List<Object> row, List<List<Object>> values) throws IOException {
-        double presence = getCellValue(row.get(2));
-        double percentalPresence = calculatePresence(presence);
+        double attendence = getCellValue(row.get(2));
+        double attendencePercentage = calculateAttendence(attendence);
         int currentRow = getCurrentRow(row, values);
         String writeRange = getWriteRange(currentRow);
         boolean passed = true;
 
-        if (percentalPresence > 0.25){
+        if (attendencePercentage > 0.25){
             passed = false;
             List<List<Object>> inputValues = Collections.singletonList(
                     Arrays.asList(
@@ -132,8 +132,8 @@ public class Utils {
         return (getCellValue(row.get(3)) + getCellValue(row.get(4)) + getCellValue(row.get(5)))/3;
     }
 
-    private double calculatePresence(double presence) {
-        return presence / 60;
+    private double calculateAttendence(double attendence) {
+        return attendence / 60;
     }
 
     private String getWriteRange(int currentRow) {
