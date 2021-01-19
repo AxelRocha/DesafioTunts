@@ -9,8 +9,9 @@ O Desafio propõe, por meio do uso da API, que o candidato calcule a situação 
 ## Requisitos para Rodar o Projeto
 
 * IDE (utilizada pelo Autor: Intellij 2020)
-* Java 1.8 ou versão mais atualizada (utilizado pelo Autor: 1.8.0_271)
-* Gradle 2.3 ou versão mais atualizada (utilizado pelo Autor: 6.3)
+* Java 1.8 ou versão mais atualizada (utilizado pelo Desenvolvedor: 1.8.0_271
+* JDK 15.0.1 ou versão mais atualizada (utilizada pelo Desenvolvedor: 15.0.1)
+* Gradle 2.3 ou versão mais atualizada (utilizado pelo Desenvolvedor: 6.3)
 * Conta Google
 
 Para executar o programa basta executar a Classe Main.
