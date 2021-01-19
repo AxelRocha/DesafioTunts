@@ -2,6 +2,9 @@ package Utils;
 
 import DAO.SheetDAO;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -9,6 +12,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Utils {
+    private static final Logger LOGGER = LoggerFactory.getLogger(Utils.class);
+
     /* Before known range to be read */
     final String readRange = "A4:H27";
 
@@ -25,17 +30,22 @@ public class Utils {
      * @throws IOException If the data is cant be retrieved by dao
      */
     public void GradeAnalysis() throws IOException {
+        LOGGER.info("Initialing Grade Analysis...");
+        LOGGER.info("Reading data from the Sheet...");
         List<List<Object>> readValues = dao.getValuesInRange(readRange);
 
         if (readValues == null || readValues.isEmpty()) {
             System.out.println("No data found.");
         } else {
             for (List<Object> row : readValues) {
+                LOGGER.info("Resolving {}'s situation according to its mean and number of classes not attended", row.get(1));
                 if (verifyMissedClasses(row, readValues)){
                     AssignStudentSituation(row, readValues);
                 }
             }
         }
+
+        LOGGER.info("Grade Analysis finished...");
     }
 
     /**
@@ -46,6 +56,7 @@ public class Utils {
      * @throws IOException If the data is cant be sent by dao
      */
     private void AssignStudentSituation(List<Object> row, List<List<Object>> values) throws IOException {
+        LOGGER.info("\t Calculating student situation according to its mean");
         int currentRow = getCurrentRow(row, values);
         String writeRange = getWriteRange(currentRow);
         List<String> situation;
@@ -98,6 +109,7 @@ public class Utils {
      * @throws IOException If the data is cant be sent by dao
      */
     private boolean verifyMissedClasses(List<Object> row, List<List<Object>> values) throws IOException {
+        LOGGER.info("\t Calculating percentage attended classes");
         double attendence = getCellValue(row.get(2));
         double attendencePercentage = calculateAttendence(attendence);
         int currentRow = getCurrentRow(row, values);
