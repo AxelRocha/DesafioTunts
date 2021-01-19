@@ -9,7 +9,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Utils {
-    /* Before kwon range to be read */
+    /* Before known range to be read */
     final String readRange = "A4:H27";
 
     final SheetDAO dao;

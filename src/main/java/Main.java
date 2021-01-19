@@ -9,8 +9,8 @@ import static Service.SheetService.getService;
 
 public class Main {
     public static void main(String... args) throws IOException, GeneralSecurityException {
-
-        final String sheetName = "test_sheet";
+        /* Before known sheet name to be read */
+        final String sheetName = "engenharia_de_software";
 
         /* Create Google Sheet Service */
         Sheets gsService = getService();
